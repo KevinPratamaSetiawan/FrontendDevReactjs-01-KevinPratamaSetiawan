@@ -1,50 +1,18 @@
-# React + TypeScript + Vite
+# FrontendDevReactjs-01-KevinPratamaSetiawan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+versi React: "^18.3.1",
+versi Bootstrap: "^5.3.3",
+versi Typescript: "~5.6.2",
+versi Vite: "^5.4.10",
+versi Node.js: "v20.18.0"
 
-Currently, two official plugins are available:
+Start the project by:
+1. npm install
+2. npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+VITE_RAPID_API_HOST=local-business-data.p.rapidapi.com (for get restaurants and reviews data)
+VITE_RAPID_API_KEY1=49f799c2damsh28ccfeff77f2b99p19141bjsnbcfbc8acf764 (expired)
+VITE_RAPID_API_KEY2=99a3a7664dmsh72b0a59ee1f8904p1642a8jsn0dc45836feeb (78 left)
+VITE_RAPID_API_KEY3=91a8efce88msh22ea7fe7bc7b87bp16ac56jsn09677ef3b712 (500 left)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+VITE_MAPS_API_KEY=AIzaSyCjMMXWDrYRgxpG9ArgM5Xn1iTmYZsCtgI (for gmaps display)

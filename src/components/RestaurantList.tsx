@@ -19,7 +19,8 @@ export default function RestaurantList({restoData, priceRange, isOpen, category,
   const openStatus = isOpen ? 'Open' : 'Closed';
 
   const filteredRestoData = restoData.filter((resto: RestoDataProps) => {
-    const [currentOpenStatus, detail] = resto.opening_status !== null ? resto.opening_status.split(' ⋅ ') : ["no info", ""];
+    let [currentOpenStatus, detail] = resto.opening_status !== null ? resto.opening_status.split(' ⋅ ') : ["no info", ""];
+    detail = '';
     return (
       (priceRange === 'any' || resto.price_level.includes(priceRange)) &&
       (isOpen ? currentOpenStatus.includes(openStatus) : true) &&

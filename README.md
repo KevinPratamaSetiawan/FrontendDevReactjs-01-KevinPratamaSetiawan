@@ -1,5 +1,9 @@
 # FrontendDevReactjs-01-KevinPratamaSetiawan
 
+Github Repo: https://github.com/KevinPratamaSetiawan/FrontendDevReactjs-01-KevinPratamaSetiawan
+
+Netlify Link: https://frontenddevreactjs-01-kevinpratamaset.netlify.app
+
 versi React: "^18.3.1",
 versi Bootstrap: "^5.3.3",
 versi Typescript: "~5.6.2",

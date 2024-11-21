@@ -19,7 +19,8 @@ export default function RestaurantDetail() {
     const { detailResto } = location.state || {};
     
     const [reviews, setReviews] = useState<any[]>([]);
-    const [currentOpenStatus, detail] = detailResto.opening_status !== null ? detailResto.opening_status.split(' ⋅ ') : 'no info';
+    let [currentOpenStatus, detail] = detailResto.opening_status !== null ? detailResto.opening_status.split(' ⋅ ') : 'no info';
+    detail = '';
 
     useEffect(() => {
         const fetchReview = async () => {

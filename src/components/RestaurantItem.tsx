@@ -10,7 +10,8 @@ type RestaurantItemProps = {
 }
 
 export default function RestaurantItem({dataResto}: RestaurantItemProps) {
-  const [currentOpenStatus, detail] = dataResto.opening_status !== null ? dataResto.opening_status.split(' ⋅ ') : 'no info';
+  let [currentOpenStatus, detail] = dataResto.opening_status !== null ? dataResto.opening_status.split(' ⋅ ') : 'no info';
+  detail = '';
   const navigate = useNavigate();
 
   return (

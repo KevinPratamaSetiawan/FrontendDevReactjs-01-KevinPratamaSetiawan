@@ -3,6 +3,7 @@
 Github Repo: https://github.com/KevinPratamaSetiawan/FrontendDevReactjs-01-KevinPratamaSetiawan
 
 Netlify Link: https://frontenddevreactjs-01-kevinpratamaset.netlify.app
+Vercel Link: https://frontend-dev-reactjs-01-kevin-pratama-setiawan.vercel.app/
 
 versi React: "^18.3.1",
 versi Bootstrap: "^5.3.3",

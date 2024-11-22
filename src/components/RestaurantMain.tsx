@@ -72,6 +72,7 @@ export default function RestaurantMain() {
             restoData={includeDummy ? [...restoData, ...dummyData] : restoData}
             priceRange={priceRange}
             isOpen={isOpen}
+            includeDummy={includeDummy}
             category={category}
             isLoading={loading}
             handleLimit={onLimitChangeEventHandler}

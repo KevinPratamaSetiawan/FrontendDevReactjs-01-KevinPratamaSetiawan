@@ -7,10 +7,11 @@ import RestaurantRating from './RestaurantRating';
 
 type RestaurantItemProps = {
   dataResto: RestoDataProps;
+  includeDummy: boolean;
 }
 
-export default function RestaurantItem({dataResto}: RestaurantItemProps) {
-  const currentOpenStatus = dataResto.opening_status !== null ? dataResto.opening_status.replace(' ⋅ .*', '') : 'no info';
+export default function RestaurantItem({dataResto, includeDummy}: RestaurantItemProps) {
+  const currentOpenStatus = dataResto.opening_status !== null ? dataResto.opening_status.replace(/ ⋅ .*/, '') : 'no info';
   const navigate = useNavigate();
 
   return (
@@ -29,7 +30,7 @@ export default function RestaurantItem({dataResto}: RestaurantItemProps) {
             <Card.Text className='m-0'>
               {/* {dataResto.type.replace('restaurant', '')} */}
               {dataResto.subtypes
-                .map((subtype: string) => subtype.replace(/restaurant/gi, ''))
+                .map((subtype: string) => subtype.replace(/restaurant/g, ''))
                 .join(', ')
                 .trim()}
             </Card.Text>
@@ -47,7 +48,7 @@ export default function RestaurantItem({dataResto}: RestaurantItemProps) {
       </Card.Body>
 
       <Card.Body className='d-flex justify-content-end align-items-end'>
-        <Button onClick={() => navigate(`/detail/${dataResto.business_id}`, { state: { detailResto: dataResto } })} variant="primary" className='w-100' style={{height: '60px'}}>
+        <Button onClick={() => navigate(`/detail/${dataResto.business_id}`, { state: { detailResto: dataResto, isIncludeDummy: includeDummy } })} variant="primary" className='w-100' style={{height: '60px'}}>
           Learn More →
         </Button>
       </Card.Body>

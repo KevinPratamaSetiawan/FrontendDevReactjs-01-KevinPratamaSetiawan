@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import RestaurantRating from './RestaurantRating';
 import RestaurantReadmore from './RestaurantReadMore';
 import { FaChevronLeft } from 'react-icons/fa';
-// import { dummyReview } from '../api/dummyData';
+import { dummyReview } from '../api/dummyData';
 import { getReviewData } from '../api/LocalBusinessDataAPI';
 
 export default function RestaurantDetail() {
@@ -16,16 +16,22 @@ export default function RestaurantDetail() {
     const location = useLocation();
     const { id } = useParams<{ id: string }>();
     const safeId = id ?? "0x2e69f423590651f7:0x983424b56075bd8";
-    const { detailResto } = location.state || {};
+    const { detailResto, isIncludeDummy } = location.state || {};
     
     const [reviews, setReviews] = useState<any[]>([]);
-    const currentOpenStatus = detailResto.opening_status !== null ? detailResto.opening_status.replace(' ⋅ .*', '') : 'no info';
+    const currentOpenStatus = detailResto.opening_status !== null ? detailResto.opening_status.replace(/ ⋅ .*/, '') : 'no info';
+
+    useEffect(() => {
+        if (isIncludeDummy) {
+            setReviews((prevReviews) => [...prevReviews, ...dummyReview]);
+        }
+    }, [isIncludeDummy]);
 
     useEffect(() => {
         const fetchReview = async () => {
             const data = await getReviewData(safeId, 'en', 'most_relevant');
             if (data) {
-                setReviews(data);
+                setReviews((prevReviews) => [...prevReviews, ...data]);
             }
         };
         
@@ -72,8 +78,8 @@ export default function RestaurantDetail() {
                 {reviews.length > 0 ? (
                 <Carousel interval={null}>
                     {reviews.map((review) => (
-                        <Carousel.Item>
-                            <div key={review.review_id} className="my-2 border p-4 rounded d-flex flex-column align-items-left gap-3 mx-auto" style={{width: '85%'}}>
+                        <Carousel.Item key={review.review_id}>
+                            <div className="my-2 border p-4 rounded d-flex flex-column align-items-left gap-3 mx-auto" style={{width: '85%'}}>
                                 <div className='d-flex align-items-center justify-content-start gap-2'>
                                     <img src={review.author_photo_url} className='rounded-circle border' style={{width: '40px', height: '40px', objectFit: 'cover', objectPosition: '50% 50%'}} alt="Review Profile Picture"  />
                                     <p className='m-0'><strong>{review.author_name}</strong></p>

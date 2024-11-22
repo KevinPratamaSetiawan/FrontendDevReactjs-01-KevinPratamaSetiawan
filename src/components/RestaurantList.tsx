@@ -10,16 +10,17 @@ type RestaurantListProps = {
   restoData: RestoDataProps[];
   priceRange: string;
   isOpen: boolean;
+  includeDummy: boolean;
   category: string;
   isLoading: boolean;
   handleLimit: () => void;
 }
 
-export default function RestaurantList({restoData, priceRange, isOpen, category, isLoading, handleLimit}: RestaurantListProps) {
+export default function RestaurantList({restoData, priceRange, isOpen, includeDummy, category, isLoading, handleLimit}: RestaurantListProps) {
   const openStatus = isOpen ? 'Open' : 'Closed';
 
   const filteredRestoData = restoData.filter((resto: RestoDataProps) => {
-    const currentOpenStatus = resto.opening_status !== null ? resto.opening_status.replace(' ⋅ .*', '') : "no info";
+    const currentOpenStatus = resto.opening_status !== null ? resto.opening_status.replace(/ ⋅ .*/, '') : "no info";
     return (
       (priceRange === 'any' || resto.price_level.includes(priceRange)) &&
       (isOpen ? currentOpenStatus.includes(openStatus) : true) &&
@@ -37,7 +38,7 @@ export default function RestaurantList({restoData, priceRange, isOpen, category,
       <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4 pt-1 pb-4 m-0">
       {filteredRestoData.length !== 0 ? filteredRestoData.map((resto:any, idx:any) => (
         <Col key={idx}>
-          <RestaurantItem dataResto={resto} />
+          <RestaurantItem dataResto={resto} includeDummy={includeDummy} />
         </Col>
       )):
       <p className='w-100 text-center'>No restaurant found</p>
